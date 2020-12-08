@@ -1,0 +1,103 @@
+@size: 200px;
+@dropSize: 15px;
+@color: #f74d4d;
+@color2: #e97f82;
+@dropColor: #d65d5d;
+
+body {
+    background: #333;
+    .select-button {
+        margin-left: 30px;
+        .bigRedButton(@size, @dropSize, @color, @color2, @dropColor);
+    }
+}
+
+.bigRedButton(@size, @dropSize, @color, @color2, @dropColor) {
+    width: @size;
+    height: @size - @size / 10;
+    line-height: @size;
+    text-align: center;
+    border: 1px solid rgb(53, 53, 53);
+    cursor: pointer;
+    border-radius: 50%;
+    background: @color;
+
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0%, @color),
+        color-stop(100%, @color2)
+    );
+
+    background-image: -moz-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0%, @color),
+        color-stop(100%, @color2)
+    );
+
+    box-shadow: 0 @dropSize @dropColor;
+
+    &:active {
+        box-shadow: 0 0 @dropColor;
+        .translate(0px, @dropSize);
+        .transition( 0.1s all ease-out);
+    }
+}
+
+.translate (@x, @y:0) {
+    -webkit-transform: translate(@x, @y);
+    -moz-transform: translate(@x, @y);
+    -ms-transform: translate(@x, @y);
+    -o-transform: translate(@x, @y);
+}
+
+.transition (@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -ms-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+.container {
+    height: 200px;
+    position: relative;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    color: #eee;
+    font-size: 40px;
+}
+
+.button-text {
+    margin: 0px;
+    font-family: "Montserrat", sans-serif;
+    color: #eee;
+    font-size: 20px;
+}
+
+.inline {
+    margin-top: 200px;
+    width: 100px;
+    display: inline-flex;
+}
+#count {
+    margin-left: 10px;
+}
+
+.disable-select {
+    user-select: none;
+}
